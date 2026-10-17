@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Báo Cáo Đồ Án - Hệ Thống Quản Lý Thư Viện C++</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+    @page {
+      size: A4;
+      margin: 20mm 15mm 20mm 20mm;
+      @bottom-right {
+        content: counter(page);
+      }
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Roboto', 'Times New Roman', serif;
+      font-size: 13pt;
+      line-height: 1.5;
+      color: #1a1a1a;
+      background: #ffffff;
+      padding: 0;
+    }
+
+    /* TRANG BÌA (COVER PAGE) */
+    .cover-page {
+      page-break-after: always;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      min-height: 92vh;
+      border: 3px double #0f2b5c;
+      padding: 40px 30px;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .cover-header h3 {
+      font-size: 14pt;
+      font-weight: 700;
+      color: #0f2b5c;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .cover-header h4 {
+      font-size: 12pt;
+      font-weight: 500;
+      color: #475569;
+      margin-top: 5px;
+    }
+
+    .cover-divider {
+      width: 120px;
+      height: 2px;
+      background: #0f2b5c;
+      margin: 15px auto;
+    }
+
+    .cover-title {
+      margin: 50px 0;
+    }
+
+    .cover-title .subtitle {
+      font-size: 13pt;
+      font-weight: 600;
+      color: #c2410c;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      letter-spacing: 0.08em;
+    }
+
+    .cover-title h1 {
+      font-size: 22pt;
+      font-weight: 800;
+      color: #0f2b5c;
+      text-transform: uppercase;
+      line-height: 1.3;
+      margin-bottom: 12px;
+    }
+
+    .cover-title p {
+      font-size: 12pt;
+      color: #334155;
+      font-style: italic;
+    }
+
+    .cover-info {
+      width: 100%;
+      max-width: 480px;
+      margin: 0 auto;
+      text-align: left;
+      font-size: 12pt;
+      border-left: 3px solid #0f2b5c;
+      padding-left: 18px;
+    }
+
+    .cover-info table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 0;
+    }
+
+    .cover-info td {
+      padding: 5px 4px;
+      border: none;
+    }
+
+    .cover-footer {
+      font-size: 11pt;
+      color: #64748b;
+    }
+
+    /* NỘI DUNG CHÍNH */
+    .content { padding: 10px 0; }
+
+    h1, h2, h3, h4 { color: #0f2b5c; page-break-after: avoid; }
+
+    h2 {
+      font-size: 15.5pt;
+      border-bottom: 2px solid #0f2b5c;
+      padding-bottom: 6px;
+      margin-top: 26px;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+    }
+
+    h3 {
+      font-size: 13pt;
+      margin-top: 18px;
+      margin-bottom: 8px;
+      color: #1e3a8a;
+    }
+
+    p { margin-bottom: 10px; text-align: justify; }
+    ul, ol { margin-left: 25px; margin-bottom: 12px; }
+    li { margin-bottom: 5px; text-align: justify; }
+
+    /* BẢNG BIỂU */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 14px 0 18px 0;
+      font-size: 10.5pt;
+      page-break-inside: avoid;
+    }
+
+    table th, table td {
+      border: 1px solid #cbd5e1;
+      padding: 7px 10px;
+      text-align: left;
+    }
+
+    table th {
+      background: #f1f5f9;
+      color: #0f2b5c;
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 9.5pt;
+    }
+
+    table tr:nth-child(even) td { background: #f8fafc; }
+
+    pre {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-left: 4px solid #0f2b5c;
+      padding: 10px 14px;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 10px 0 14px 0;
+      font-family: 'JetBrains Mono', Consolas, monospace;
+      font-size: 9.5pt;
+      line-height: 1.4;
+      page-break-inside: avoid;
+      color: #0f172a;
+    }
+
+    code {
+      font-family: 'JetBrains Mono', Consolas, monospace;
+      background: #f1f5f9;
+      color: #0f2b5c;
+      padding: 2px 5px;
+      border-radius: 3px;
+      font-size: 10pt;
+    }
+
+    .note-box {
+      background: #eff6ff;
+      border-left: 4px solid #2563eb;
+      padding: 12px 16px;
+      margin: 14px 0;
+      border-radius: 0 6px 6px 0;
+      font-size: 11pt;
+    }
+
+    .qa-card {
+      background: #fafaf9;
+      border: 1px solid #e7e5e4;
+      border-left: 4px solid #ea580c;
+      border-radius: 4px;
+      padding: 12px 16px;
+      margin: 12px 0;
+      page-break-inside: avoid;
+    }
+
+    .qa-card .question { font-weight: 700; color: #9a3412; margin-bottom: 5px; font-size: 11.5pt; }
+    .qa-card .answer { color: #292524; text-align: justify; font-size: 11pt; }
+
+    .badge-pass { background: #dcfce7; color: #166534; font-weight: 600; padding: 2px 6px; border-radius: 4px; font-size: 9pt; }
+    .page-break { page-break-before: always; }
+  </style>
+</head>
+<body>
+
+  <!-- ==================== TRANG BÌA ==================== -->
+  <div class="cover-page">
+    <div class="cover-header">
+      <h3>TRƯỜNG ĐẠI HỌC BÁCH KHOA HÀ NỘI</h3>
+      <h4>KHOA CÔNG NGHỆ THÔNG TIN &amp; TRUYỀN THÔNG</h4>
+      <div class="cover-divider"></div>
+    </div>
+
+    <div class="cover-title">
+      <div class="subtitle">BÁO CÁO ĐỒ ÁN MÔN HỌC</div>
+      <h1>CẤU TRÚC DỮ LIỆU VÀ GIẢI THUẬT</h1>
+      <p style="margin-top: 15px; font-size: 14pt; font-weight: 600; color: #1e3a8a;">
+        ĐỀ TÀI: HỆ THỐNG QUẢN LÝ THƯ VIỆN &amp; QUAN HỆ NGƯỜI MƯỢN SÁCH
+      </p>
+      <p style="margin-top: 8px; font-size: 11pt; color: #475569;">
+        (Quản lý quan hệ 1-N &bull; Số lượng kho &bull; 100% Cài đặt thủ công bằng Con trỏ C++)
+      </p>
+    </div>
+
+    <div class="cover-info">
+      <table>
+        <tr>
+          <td style="width: 150px; font-weight: 600;">Sinh viên thực hiện:</td>
+          <td>Tô Vĩnh Dũng</td>
+        </tr>
+        <tr>
+          <td style="font-weight: 600;">Môn học:</td>
+          <td>Cấu trúc Dữ liệu và Giải thuật</td>
+        </tr>
+        <tr>
+          <td style="font-weight: 600;">Mô hình dữ liệu:</td>
+          <td>Quan hệ Sách &mdash; Phiếu mượn Sinh viên</td>
+        </tr>
+        <tr>
+          <td style="font-weight: 600;">Ngôn ngữ:</td>
+          <td>C++ (Chuẩn C++11 &bull; Không dùng STL)</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="cover-footer">
+      <p>HÀ NỘI &mdash; 2026</p>
+    </div>
+  </div>
+
+  <!-- ==================== NỘI DUNG CHÍNH ==================== -->
+  <div class="content">
+
+    <h2>1. GIỚI THIỆU TỔNG QUAN VÀ MÔ HÌNH BÀI TOÁN</h2>
+    <p>
+      Trong thực tế vận hành thư viện trường đại học, mỗi đầu sách luôn có <strong>tổng số lượng (inventory)</strong> nhất định và có thể cho <strong>nhiều sinh viên mượn đồng thời</strong> cho đến khi số lượng còn lại trong kho bằng 0. Hệ thống cần ghi nhận chi tiết: <em>Ai đang mượn? (Họ tên, Mã số sinh viên - MSSV), mượn cuốn sách nào, loại sách gì và vào thời điểm nào?</em>
+    </p>
+
+    <div class="note-box">
+      <strong>Mô hình quan hệ 1 &ndash; N (Một &ndash; Nhiều):</strong><br>
+      Một <strong>Đầu Sách</strong> (Book) $\rightarrow$ Nhiều <strong>Phiếu Mượn</strong> (Borrower Records). Khi sinh viên mượn sách, hệ thống giảm <code>soLuongConLai--</code>. Khi <code>soLuongConLai == 0</code>, cuốn sách chính thức hết và các sinh viên đến sau sẽ được xếp vào <strong>Hàng đợi đặt trước (Queue FIFO)</strong>.
+    </div>
+
+    <h2>2. CẤU TRÚC DỮ LIỆU TỰ THIẾT KẾ</h2>
+
+    <h3>2.1. Cấu trúc Đầu Sách (<code>struct Book</code>)</h3>
+    <pre><code>struct Book {
+    string maSach;          // Mã định danh duy nhất (ví dụ: "CS101")
+    string tenSach;         // Tên cuốn sách
+    string loaiSach;        // Thể loại: "Giáo trình", "Kỹ thuật", "Tham khảo"...
+    int tongSoLuong;        // Tổng số bản sách thư viện sở hữu
+    int soLuongConLai;      // Số lượng sách hiện còn trong kho (cho mượn nếu > 0)
+    int luotMuon;           // Tổng số lượt sách đã được mượn
+};</code></pre>
+
+    <h3>2.2. Cấu trúc Phiếu Mượn của Sinh viên (<code>struct PhieuMuon</code>)</h3>
+    <pre><code>struct PhieuMuon {
+    string maPhieu;         // Mã phiếu: "PM001", "PM002"...
+    string tenSinhVien;     // Họ và tên sinh viên mượn sách
+    string maSinhVien;      // Mã số sinh viên (MSSV)
+    string maSach;          // Mã sách mượn
+    string tenSach;         // Tên cuốn sách mượn
+    string loaiSach;        // Thể loại sách
+    string ngayMuon;        // Ngày lập phiếu mượn (ví dụ: "16/10/2026")
+};
+
+struct NodePhieuMuon {
+    PhieuMuon data;
+    NodePhieuMuon* next;    // Con trỏ liên kết danh sách phiếu mượn
+};</code></pre>
+
+    <h3>2.3. Ngăn xếp Hoàn tác (<code>struct Stack</code> LIFO)</h3>
+    <pre><code>enum ActionType { ACTION_MUON_SACH, ACTION_XOA_SACH };
+
+struct UndoAction {
+    ActionType loaiHanhDong;
+    Book sach;              // Lưu bản sao sách
+    PhieuMuon phieu;        // Lưu thông tin phiếu mượn (để xóa khi Undo mượn)
+};
+
+struct StackNode {
+    UndoAction data;
+    StackNode* next;
+};
+
+struct Stack {
+    StackNode* top;         // Con trỏ đỉnh ngăn xếp LIFO
+    int count;
+};</code></pre>
+
+    <h3>2.4. Hàng đợi Đặt trước (<code>struct Queue</code> FIFO)</h3>
+    <pre><code>struct PhieuDatCho {
+    string tenSinhVien;     // Họ tên sinh viên chờ mượn
+    string maSinhVien;      // MSSV
+    string maSachCanMuon;   // Mã sách cần mượn khi có sách hoàn kho
+};
+
+struct QueueNode {
+    PhieuDatCho data;
+    QueueNode* next;
+};
+
+struct Queue {
+    QueueNode* front;       // Đầu hàng đợi (lấy ra phục vụ)
+    QueueNode* rear;        // Cuối hàng đợi (thêm người vào)
+    int count;
+};</code></pre>
+
+    <div class="page-break"></div>
+
+    <h2>3. CHI TIẾT CÁC THUẬT TOÁN SỬ DỤNG VÀ NGUYÊN LÝ HOẠT ĐỘNG</h2>
+
+    <h3>3.1. Thuật toán Mượn sách (Quy trình kiểm tra số lượng và tạo phiếu)</h3>
+    <ol>
+      <li>Người dùng nhập mã sách cần mượn. Hệ thống tìm kiếm nhanh bằng <strong>Binary Search $O(\log n)$</strong>.</li>
+      <li>Kiểm tra điều kiện:
+        <ul>
+          <li><strong>Nếu <code>soLuongConLai &gt; 0</code>:</strong> Cho phép mượn. Yêu cầu nhập Họ tên sinh viên và MSSV. Hệ thống giảm <code>soLuongConLai--</code>, tăng <code>luotMuon++</code>, tự sinh mã phiếu <code>PMxxx</code> và chèn một nút <code>NodePhieuMuon</code> mới vào cuối danh sách liên kết phiếu mượn. Đẩy thao tác vào đỉnh <strong>Stack Undo</strong>.</li>
+          <li><strong>Nếu <code>soLuongConLai == 0</code>:</strong> Sách đã được mượn hết. Hệ thống từ chối cho mượn và đưa sinh viên vào cuối <strong>Hàng đợi đặt trước (Queue FIFO)</strong>.</li>
+        </ul>
+      </li>
+    </ol>
+
+    <h3>3.2. Thuật toán Nhận trả sách &amp; Ưu tiên Hàng đợi</h3>
+    <ol>
+      <li>Nhập MSSV và Mã sách trả. Duyệt danh sách liên kết phiếu mượn, hủy nút tương ứng.</li>
+      <li>Tăng số lượng sách trong kho: <code>soLuongConLai++</code>.</li>
+      <li>Kiểm tra Hàng đợi đặt trước: Nếu <code>queueDatCho</code> có sinh viên đang đợi đúng mã sách này, hệ thống phát tín hiệu ưu tiên giải quyết ngay cho sinh viên đứng đầu hàng đợi (Dequeue).</li>
+    </ol>
+
+    <h3>3.3. Thuật toán Hoàn tác (Undo) theo mô hình quan hệ</h3>
+    <ul>
+      <li><strong>Hoàn tác thao tác Mượn sách:</strong> Rút hành động từ đỉnh Stack ra (`pop`). Hệ thống tự động xóa phiếu mượn của sinh viên đó khỏi danh sách liên kết phiếu mượn, đồng thời hoàn trả lại <code>soLuongConLai++</code> và giảm <code>luotMuon--</code>.</li>
+      <li><strong>Hoàn tác thao tác Xóa sách:</strong> Khôi phục lại toàn bộ đầu sách vào kho.</li>
+    </ul>
+
+    <h3>3.4. Thuật toán Sắp xếp QuickSort &amp; Tìm kiếm Nhị phân</h3>
+    <p>
+      Do danh sách liên kết đơn không hỗ trợ truy cập ngẫu nhiên ($O(1)$ random access), chương trình chuyển các phần tử sang một mảng động <code>Book* arr = new Book[n]</code>, chạy thuật toán <strong>QuickSort (phân hoạch Lomuto)</strong> để sắp xếp tăng dần theo mã sách, sau đó áp dụng <strong>Binary Search</strong> với độ phức tạp $O(\log n)$ để tìm kiếm mã sách tức thì.
+    </p>
+
+    <h2>4. BẢNG TỔNG HỢP ĐỘ PHỨC TẠP THUẬT TOÁN</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Thao tác Nghiệp vụ</th>
+          <th>Cấu trúc dữ liệu sử dụng</th>
+          <th>Độ phức tạp Thời gian (Time)</th>
+          <th>Độ phức tạp Không gian (Space)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Thêm đầu sách mới</td>
+          <td>Singly Linked List (Sách)</td>
+          <td>$O(n)$</td>
+          <td>$O(1)$</td>
+        </tr>
+        <tr>
+          <td>Lập phiếu mượn sinh viên</td>
+          <td>Singly Linked List (Phiếu mượn)</td>
+          <td>$O(n)$</td>
+          <td>$O(1)$</td>
+        </tr>
+        <tr>
+          <td>Trả sách &amp; Hủy phiếu mượn</td>
+          <td>Singly Linked List (Phiếu mượn)</td>
+          <td>$O(n)$</td>
+          <td>$O(1)$</td>
+        </tr>
+        <tr>
+          <td>Lưu Undo / Hoàn tác</td>
+          <td>Stack (LIFO con trỏ top)</td>
+          <td>$O(1)$</td>
+          <td>$O(1)$</td>
+        </tr>
+        <tr>
+          <td>Đặt chỗ khi hết sách</td>
+          <td>Queue (FIFO con trỏ rear)</td>
+          <td>$O(1)$</td>
+          <td>$O(1)$</td>
+        </tr>
+        <tr>
+          <td>Phục vụ hàng đợi (Dequeue)</td>
+          <td>Queue (FIFO con trỏ front)</td>
+          <td>$O(1)$</td>
+          <td>$O(1)$</td>
+        </tr>
+        <tr>
+          <td>Sắp xếp danh mục sách</td>
+          <td>Mảng động + QuickSort</td>
+          <td>Trung bình: $O(n \log n)$</td>
+          <td>$O(\log n)$</td>
+        </tr>
+        <tr>
+          <td>Tìm kiếm mã sách</td>
+          <td>Mảng động + Binary Search</td>
+          <td>$O(\log n)$</td>
+          <td>$O(1)$</td>
+        </tr>
+        <tr>
+          <td>Xuất Web HTML tĩnh</td>
+          <td>File Stream + Linked Lists</td>
+          <td>$O(n + m)$ ($n$: sách, $m$: phiếu)</td>
+          <td>$O(1)$</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="page-break"></div>
+
+    <h2>5. HỎI ĐÁP PHỤC VỤ BẢO VỆ ĐỒ ÁN TRƯỚC HỘI ĐỒNG</h2>
+
+    <div class="qa-card">
+      <div class="question">Câu hỏi 1: Em thiết kế quan hệ giữa Sách và Người mượn trong bài toán này như thế nào?</div>
+      <div class="answer">
+        <em>Trả lời:</em> Em thiết kế theo mô hình quan hệ <strong>1 &ndash; N (Một &ndash; Nhiều)</strong>. Mỗi đầu sách trong thư viện có tổng số lượng <code>tongSoLuong</code> và số lượng hiện còn <code>soLuongConLai</code>. Khi sinh viên mượn sách, một bản ghi <code>PhieuMuon</code> được tạo ra chứa đầy đủ Họ tên, MSSV, Mã sách và Loại sách. Một cuốn sách có thể được nhiều sinh viên mượn cùng lúc cho đến khi <code>soLuongConLai == 0</code>.
+      </div>
+    </div>
+
+    <div class="qa-card">
+      <div class="question">Câu hỏi 2: Tại sao em dùng 2 Danh sách liên kết đơn riêng biệt thay vì lồng nhau?</div>
+      <div class="answer">
+        <em>Trả lời:</em> Em tách thành 2 Danh sách liên kết đơn độc lập: một DSLK quản lý danh mục sách (Kho sách) và một DSLK quản lý danh sách phiếu mượn (Nhật ký mượn). Cách thiết kế này tuân theo nguyên lý phân tách trách nhiệm (Separation of Concerns), giúp việc quản lý kho sách, sắp xếp bằng QuickSort và tìm kiếm nhị phân được độc lập, đồng thời việc tra cứu sinh viên đang mượn sách không làm cồng kềnh cấu trúc cuốn sách.
+      </div>
+    </div>
+
+    <div class="qa-card">
+      <div class="question">Câu hỏi 3: Khi số lượng sách còn lại bằng 0 thì hệ thống xử lý ra sao?</div>
+      <div class="answer">
+        <em>Trả lời:</em> Khi <code>soLuongConLai == 0</code>, hệ thống từ chối cho mượn và tự động kích hoạt chức năng đưa sinh viên vào Hàng đợi đặt trước (Queue FIFO). Khi có bất kỳ sinh viên nào đem trả cuốn sách đó lại kho, hệ thống kiểm tra ngay đỉnh Hàng đợi để thông báo ưu tiên mượn cho người đăng ký sớm nhất.
+      </div>
+    </div>
+
+    <h2>6. KẾT LUẬN</h2>
+    <p>
+      Hệ thống đã giải quyết trọn vẹn bài toán nghiệp vụ thư viện thực tế với mô hình quan hệ Sách &ndash; Sinh viên mượn sách, áp dụng thành công các cấu trúc dữ liệu nền tảng (Singly Linked List, Stack LIFO, Queue FIFO, QuickSort, Binary Search) được lập trình 100% bằng con trỏ thuần trong C++.
+    </p>
+
+  </div>
+
+</body>
+</html>

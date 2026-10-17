@@ -1,0 +1,9 @@
+PM001|Nguyen Van An|20210001|CS101|Cau truc du lieu va Giai thuat|Giao trinh|15/10/2026
+PM002|Tran Thi Binh|20210002|CS101|Cau truc du lieu va Giai thuat|Giao trinh|15/10/2026
+PM003|Le Van Cuong|20210003|CS101|Cau truc du lieu va Giai thuat|Giao trinh|15/10/2026
+PM004|Pham Thi Dung|20210004|CS102|Lap trinh huong doi tuong C++|Giao trinh|16/10/2026
+PM005|Hoang Van Em|20210005|TT001|Nha Gia Kim|Tieu thuyet|16/10/2026
+PM006|Vu Thi Hoa|20210006|TT002|Mat Biec|Tieu thuyet Viet Nam|16/10/2026
+PM007|Do Manh Hung|20210007|TT005|Bo Gia|Tieu thuyet Trinh tham|16/10/2026
+PM008|Nguyen Mai Linh|20210008|TT006|Sherlock Holmes Toan Tap|Tieu thuyet Trinh tham|16/10/2026
+PM009|Bui Quoc Khanh|20210009|TT008|Dac Nhan Tam|Tam ly & Ky nang|16/10/2026

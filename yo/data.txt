@@ -1,0 +1,14 @@
+CS101|Cau truc du lieu va Giai thuat|Giao trinh|10|7|19
+CS102|Lap trinh huong doi tuong C++|Giao trinh|8|4|32
+CS103|Kien truc may tinh va He dieu hanh|Ky thuat|6|5|11
+CS104|Co so du lieu quan he SQL|Ky thuat|6|4|15
+CS105|Tri tue nhan tao can ban|Khoa hoc|5|2|40
+TT001|Nha Gia Kim|Tieu thuyet|12|9|85
+TT002|Mat Biec|Tieu thuyet Viet Nam|8|3|64
+TT003|Toi Thay Hoa Vang Tren Co Xanh|Tieu thuyet Viet Nam|7|2|53
+TT004|Rung Na Uy|Tieu thuyet Nuoc ngoai|6|1|42
+TT005|Bo Gia|Tieu thuyet Trinh tham|10|6|78
+TT006|Sherlock Holmes Toan Tap|Tieu thuyet Trinh tham|5|0|96
+TT007|Hoang Tu Be|Van hoc Kinh dien|15|11|120
+TT008|Dac Nhan Tam|Tam ly & Ky nang|14|8|150
+TT009|Chien Binh Cau Vong|Tieu thuyet Truyen cam hung|6|3|39
